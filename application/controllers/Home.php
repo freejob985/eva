@@ -220,7 +220,7 @@ private function getAvailableBookingTimes($booking_time, $booking_date, $duratio
     // جلب المواعيد المحجوزة
     $booked_times = $this->get_appointment_times($service_id, $doctor_id);
 
-
+// dd($booked_times);
     $available_times = [];
     $row_count = 0;
     $start_time = new DateTime("$booking_date $booking_time");
@@ -278,7 +278,7 @@ private function getAvailableBookingTimes($booking_time, $booking_date, $duratio
         $this->form_validation->set_rules('payment_method', 'طريقة الدفع', 'required');
 
 // dd(
-// $this->get_appointment_times($this->input->post('serves_id'),$this->input->post('doctor_id'))
+//  $formData
 // );
         if ($this->form_validation->run() == FALSE) {
 

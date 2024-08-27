@@ -64,6 +64,23 @@ div#appointment-form {
 .appointment.text-center {
     display: none;
 }
+
+.booked-text {
+    color: #4e0909;
+    font-size: 8px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.form-container label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #006057;
+    width: 100%;
+}
+
+
+
 </style>
 
 <style>
@@ -109,6 +126,11 @@ div#appointment-form {
     font-size: 0.8em;
     margin-left: 5px;
 }
+
+select#userLang {
+    display: none;
+}
+
 
 </style>
 
@@ -831,14 +853,17 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(document).ready(function() {
     // عند تغيير الخدمة المختارة
-    $('#serves').change(function() {
-        var servesId = $(this).val();
+    $('#serves,#doctorId').change(function() {
+        var servesId = $("#serves").val();
+        var doctorId = $("#doctorId").val();
+// alert(servesId);
+ // افتراض أن لديك قائمة دكتور بالفعل في HTML
 
         if (servesId) {
             $.ajax({
                 url: '<?= base_url('home/get_service_details') ?>',
                 type: 'POST',
-                data: { serves_id: servesId },
+                data: { serves_id: servesId,doctorId:doctorId },
                 dataType: 'json',
                 success: function(response) {
                     if (response.status) {
